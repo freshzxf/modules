@@ -102,7 +102,7 @@
 
             // 获取包含类名的DOM兼容写法
             function getElementsByClassName(className) {
-                var all = document.all ? document.all : document.getElementsByTagName('*');
+                var all = document.all ? document.all : document.getElementsByTagName('*'); // document.all 是代表文档的所有元素的集合数组
                 var elements = new Array();
                 for (var e = 0; e < all.length; e++) {
                     if (all[e].className == className) {
