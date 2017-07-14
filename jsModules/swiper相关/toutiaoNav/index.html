@@ -77,16 +77,17 @@
         freeModeMomentumRatio: 0.5,
         slidesPerView: 'auto',
         onTap: function (swiper, event) {
-            //event.preventDefault();
-            index = swiper.clickedIndex;
-            slide = swiper.slides[index];
-            slideLeft = slide.offsetLeft;
-            slideWidth = slide.clientWidth;
-            slideCenter = slideLeft + slideWidth / 2;
+            var index = swiper.clickedIndex,
+                slide = swiper.slides[index],
+                slideLeft = slide.offsetLeft,
+                slideWidth = slide.clientWidth,
+                slideCenter = slideLeft + slideWidth / 2,
+                doc = window.document,
+                topNav = doc.getElementById('topNav'),
+                act = topNav.getElementsByClassName('swiper-slide')[index];
+
             // 被点击slide的中心点
-
             mySwiper.setWrapperTransition(300);
-
             if (slideCenter < swiperWidth / 2) {
                 mySwiper.setWrapperTranslate(0)
             } else if (slideCenter > maxWidth) {
@@ -96,11 +97,9 @@
                 mySwiper.setWrapperTranslate(-nowTlanslate)
             }
 
-            var doc = window.document,
-                topNav = doc.getElementById('topNav'),
-                act = topNav.getElementsByClassName('swiper-slide')[index];
-            addClass(act, 'active')
-            removeClass(siblings(act), 'active')
+            addClass(act, 'active');
+            removeClass(siblings(act), 'active');
+
             // 获取包含类名的DOM兼容写法
             function getElementsByClassName(className) {
                 var all = document.all ? document.all : document.getElementsByTagName('*');
