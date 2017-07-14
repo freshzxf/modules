@@ -76,48 +76,74 @@
         freeMode: true,
         freeModeMomentumRatio: 0.5,
         slidesPerView: 'auto',
+        onTap: function (swiper, event) {
+            //event.preventDefault();
+            index = swiper.clickedIndex;
+            slide = swiper.slides[index];
+            slideLeft = slide.offsetLeft;
+            slideWidth = slide.clientWidth;
+            slideCenter = slideLeft + slideWidth / 2;
+            // 被点击slide的中心点
+
+            mySwiper.setWrapperTransition(300);
+
+            if (slideCenter < swiperWidth / 2) {
+                mySwiper.setWrapperTranslate(0)
+            } else if (slideCenter > maxWidth) {
+                mySwiper.setWrapperTranslate(maxTranslate)
+            } else {
+                nowTlanslate = slideCenter - swiperWidth / 2;
+                mySwiper.setWrapperTranslate(-nowTlanslate)
+            }
+
+            var doc = window.document,
+                topNav = doc.getElementById('topNav'),
+                act = topNav.getElementsByClassName('swiper-slide')[index];
+            addClass(act, 'active')
+            removeClass(siblings(act), 'active')
+            // 获取包含类名的DOM兼容写法
+            function getElementsByClassName(className) {
+                var all = document.all ? document.all : document.getElementsByTagName('*');
+                var elements = new Array();
+                for (var e = 0; e < all.length; e++) {
+                    if (all[e].className == className) {
+                        elements[elements.length] = all[e];
+                        break;
+                    }
+                }
+                return elements;
+            }
+            // 判断对象是否包含某个类名
+            function hasClass(obj, cls) {
+                return !!obj.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)")); // ( \\s|^ ) 判断前面是否有空格 （\\s | $ ）判断后面是否有空格 两个感叹号为转换为布尔值 以方便做判断
+            };
+            // 给对象添加某个类名
+            function addClass(obj, cls) {
+                if (!hasClass(obj, cls)) obj.className += " " + cls;
+            }
+            // 获取所有兄弟节点
+            function siblings(elm) {
+                var a = [];
+                var p = elm.parentNode.children;
+                for (var i = 0, pl = p.length; i < pl; i++) {
+                    if (p[i] !== elm) a.push(p[i]);
+                }
+                return a;
+            }
+            // 移除类名
+            function removeClass(obj, cls) {
+                obj.forEach(function (value, index, array) {
+                    array[index].className = array[index].className.replace(new RegExp("(\\s|^)" + cls + "(\\s|$)"), " "); // replace方法是替换
+                })
+
+            };
+        }
 
     });
-
-    swiperWidth = mySwiper.container[0].clientWidth;
+    /*  可以通过mySwiper.container[0]得到container的HTML元素 */
+    swiperWidth = mySwiper.container[0].clientWidth;  // container的屏幕宽度
     maxTranslate = mySwiper.maxTranslate();
     maxWidth = -maxTranslate + swiperWidth / 2;
-
-//    $(".swiper-container").on('touchstart', function (e) {
-//        e.preventDefault()
-//    })
-
-    mySwiper.on('tap', function (swiper, e) {
-
-        e.preventDefault();
-
-        slide = swiper.slides[swiper.clickedIndex];
-        slideLeft = slide.offsetLeft;
-        slideWidth = slide.clientWidth;
-        slideCenter = slideLeft + slideWidth / 2;
-        // 被点击slide的中心点
-
-        mySwiper.setWrapperTransition(300);
-
-        if (slideCenter < swiperWidth / 2) {
-
-            mySwiper.setWrapperTranslate(0)
-
-        } else if (slideCenter > maxWidth) {
-
-            mySwiper.setWrapperTranslate(maxTranslate)
-
-        } else {
-
-            nowTlanslate = slideCenter - swiperWidth / 2;
-
-            mySwiper.setWrapperTranslate(-nowTlanslate)
-
-        }
-//        $("#topNav  .active").removeClass('active')
-//        $("#topNav .swiper-slide").eq(swiper.clickedIndex).addClass('active')
-
-    })
 </script>
 </body>
 </html>
