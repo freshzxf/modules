@@ -33,7 +33,7 @@ swiper.unlockSwipes();
 		pre++;
 	    swiper.prependSlide(slidedata(today-pre));
 	}
-		if(swiper.activeIndex==0){		
+	if(swiper.activeIndex==0){
 		pre++;
 	    swiper.prependSlide(slidedata(today-pre));
 		pre++;

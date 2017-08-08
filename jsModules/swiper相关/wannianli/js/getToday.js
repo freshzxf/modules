@@ -31,7 +31,7 @@
         weekday = "五";
     else if (week == 6)
         weekday = "六";
-    curDateTime ='<h2>'+ curDateTime + " 周" + weekday +'</h2><h1>'+date+'</h1>';
+    curDateTime ='<h2>'+ curDateTime + "周" + weekday +'</h2><h1>'+date+'</h1>';
 
     return curDateTime;
 }
