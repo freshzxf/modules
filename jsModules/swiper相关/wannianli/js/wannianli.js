@@ -1,6 +1,12 @@
 ﻿// JavaScript Document
 function slidedata(i){
-	return '<div class="swiper-slide"><div class="wannianli-card"><div class="wannianli-info">'+GetCurrentDateTime(i)+showCal(i)+'</div><div class="wannianli-other"><table><tbody><tr><td><div>宜<i></i></div></td><td><span>造车器、纳采、订盟、祭祀、祈福、求嗣、移徙、出行、开市、出火、入宅、立券、交易、入宅、安门、安床、安葬、谢土</span></td></tr></tbody></table><table><tbody><tr><td><div>忌<i></i></div></td><td><span>开光、造屋、动土、作灶、栽种</span></td></tr></tbody></table></div><i class="wannianli-ico wannianli-lt"></i><i class="wannianli-ico wannianli-rt"></i><i class="wannianli-ico wannianli-rb"></i></div></div>';
+	return '<div class="swiper-slide">' +
+		'<div class="wannianli-card">' +
+		'<div class="wannianli-info">'+GetCurrentDateTime(i)+showCal(i)+'</div>' +
+		'<div class="wannianli-other">' +
+		'<table><tbody><tr><td><div>宜<i></i></div></td><td><span>造车器、纳采、订盟、祭祀、祈福、求嗣、移徙、出行、开市、出火、入宅、立券、交易、入宅、安门、安床、安葬、谢土</span></td></tr></tbody></table>' +
+		'<table><tbody><tr><td><div>忌<i></i></div></td><td><span>开光、造屋、动土、作灶、栽种</span></td></tr></tbody></table>' +
+		'</div><i class="wannianli-ico wannianli-lt"></i><i class="wannianli-ico wannianli-rt"></i><i class="wannianli-ico wannianli-rb"></i></div></div>';
 	}
 
 var mySwiper = new Swiper('.swiper-container', {
@@ -28,7 +34,7 @@ mySwiper.on('slideChangeStart',function(swiper){
 mySwiper.on('slideChangeEnd',function(swiper){
 	//alert(swiper.activeIndex);
 swiper.unlockSwipes();		
-
+	//如果当前索引是1（即明天），则
 	if(swiper.activeIndex==1){		
 		pre++;
 	    swiper.prependSlide(slidedata(today-pre));
