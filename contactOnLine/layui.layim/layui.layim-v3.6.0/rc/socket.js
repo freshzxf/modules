@@ -48,10 +48,9 @@
                     //console.log(res.mine);
                     layim.msgbox(5); //模拟消息盒子有新消息，实际使用时，一般是动态获得
                     //添加好友（如果检测到该socket）
-
                     layim.addList({
                         type: 'group'
-                        , avatar: "static/img/tel.jpg"
+                        , avatar: "http://tp1.sinaimg.cn/1241679004/180/5743814375/0"
                         , groupname: '海贼世界'
                         , id: "1"
                         , members: 0
