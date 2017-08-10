@@ -81,6 +81,7 @@
                 //监听发送消息
                 layim.on('sendMessage', function (data) {
                     // console.log(data);
+                    // 通过im发送消息
                     im.sendMsg(data);
                 });
             }
