@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="../build/css/layui.css">
 
 </head>
-<body data-token="roigGRiK+ak1utJChy937IbgbSWaKfmKyH0Gj9HAkypdSYC1l07Ehsvsl3CtSaKKdLxgCxH9aqIqQlJdTPPqEQ==" data-rykey="sfci50a7s120i">
-
-</body>
+<body></body>
 
 <script src="../build/layui.js"></script>
 <script>
@@ -24,13 +22,11 @@
     }).extend({
         rmlib: 'rmlib',
         protobuf: 'protobuf',
-        socket: 'socket',
+        socket: 'socket'
     });
     layui.use(['layim','jquery','socket'], function (layim,socket) {
         var $ = layui.jquery;
         var socket = layui.socket;
-        var token = $('body').data('token');
-        var rykey = $('body').data('rykey');
 
         //基础配置
         layim.config({
