@@ -10,14 +10,13 @@
 <script src="layui.js"></script>
 <script>
     layui.config({
-        base: 'myModules' //假设这是test.js所在的目录
+        base: 'myModules/' //假设这是test.js所在的目录
     }).extend({ //设定模块别名
-        index: 'test' //如果test.js是在根目录，也可以不用设定别名
+        test: 'index' //如果test.js是在根目录，也可以不用设定别名
     });
     //使用test
     layui.use('test', function(){
         var test = layui.test;
-
         test.hello('zxf!'); //弹出Hello World!
     });
 
